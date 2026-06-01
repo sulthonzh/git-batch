@@ -1,0 +1,19 @@
+{
+  "name": "git-batch",
+  "version": "1.0.0",
+  "description": "Run git operations across multiple repos at once. Zero dependencies.",
+  "main": "src/index.js",
+  "bin": {
+    "git-batch": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node test/index.test.js"
+  },
+  "keywords": ["git", "batch", "multi-repo", "monorepo", "cli"],
+  "author": "sulthonzh",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
+  "files": ["src/"]
+}
