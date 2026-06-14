@@ -101,7 +101,7 @@ function batchStash(repos, pop = false) {
 function batchExec(repos, command) {
   return repos.map(r => {
     const res = runGit(command, r.path, { timeout: 30000 });
-    return { name: r.name, path: r.path, result: res.ok ? res.out : res.out };
+    return { name: r.name, path: r.path, result: res.out };
   });
 }
 
