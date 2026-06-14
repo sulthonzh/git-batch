@@ -5,7 +5,6 @@ const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
-// ── Helpers ──────────────────────────────────────────────────────────
 function runGit(args, cwd, opts = {}) {
   try {
     const result = execSync(`git ${args}`, {
@@ -44,7 +43,6 @@ function resolveRepos(root, depth = 1) {
   return repos;
 }
 
-// ── Repo Info ────────────────────────────────────────────────────────
 function getRepoInfo(repoPath) {
   const branch = runGit('rev-parse --abbrev-ref HEAD', repoPath);
   const commit = runGit('log -1 --format=%h', repoPath);
@@ -68,7 +66,6 @@ function getRepoInfo(repoPath) {
   };
 }
 
-// ── Batch Operations ────────────────────────────────────────────────
 function batchFetch(repos) {
   return repos.map(r => {
     const res = runGit('fetch --all --prune', r.path, { timeout: 30000 });
@@ -109,7 +106,7 @@ function batchCheckout(repos, branch, create = false) {
 function batchExec(repos, command) {
   return repos.map(r => {
     const res = runGit(command, r.path, { timeout: 30000 });
-    return { ...r, result: res.ok ? res.out : res.out };
+    return { ...r, result: res.out };
   });
 }
 
@@ -121,7 +118,6 @@ function batchStash(repos, pop = false) {
   });
 }
 
-// ── Formatters ───────────────────────────────────────────────────────
 function formatStatusText(results) {
   const lines = [];
   for (const r of results) {
@@ -136,7 +132,7 @@ function formatStatusText(results) {
   return lines.join('\n');
 }
 
-function formatResultText(results, op) {
+function formatResultText(results) {
   const lines = [];
   for (const r of results) {
     const ok = typeof r.result === 'string' && !r.result.includes('error') && !r.result.includes('fatal');
@@ -169,7 +165,6 @@ function formatMarkdown(results, title) {
   return lines.join('\n');
 }
 
-// ── CLI ──────────────────────────────────────────────────────────────
 function parseArgs(argv) {
   const args = { command: null, flags: {}, positional: [] };
   for (let i = 2; i < argv.length; i++) {
@@ -291,7 +286,7 @@ function main() {
   } else if (args.command === 'status') {
     console.log(formatStatusText(results));
   } else {
-    console.log(formatResultText(results, opName));
+    console.log(formatResultText(results));
   }
 }
 
