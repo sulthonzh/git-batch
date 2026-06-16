@@ -1,5 +1,5 @@
 {
-  "name": "@quadbyte/git-batch",
+  "name": "git-batch",
   "version": "1.0.0",
   "description": "Run git operations across multiple repos at once. Zero dependencies.",
   "main": "src/index.js",
@@ -9,22 +9,11 @@
   "scripts": {
     "test": "node test/index.test.js"
   },
-  "keywords": [
-    "git",
-    "batch",
-    "multi-repo",
-    "monorepo",
-    "cli"
-  ],
+  "keywords": ["git", "batch", "multi-repo", "monorepo", "cli"],
   "author": "sulthonzh",
   "license": "MIT",
   "engines": {
     "node": ">=16"
   },
-  "files": [
-    "src/"
-  ],
-  "publishConfig": {
-    "access": "public"
-  }
+  "files": ["src/"]
 }
