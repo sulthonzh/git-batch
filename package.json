@@ -26,5 +26,13 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sulthonzh/git-batch"
+  },
+  "homepage": "https://github.com/sulthonzh/git-batch#readme",
+  "bugs": {
+    "url": "https://github.com/sulthonzh/git-batch/issues"
   }
 }
