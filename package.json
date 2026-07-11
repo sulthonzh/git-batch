@@ -34,5 +34,8 @@
   "homepage": "https://github.com/sulthonzh/git-batch#readme",
   "bugs": {
     "url": "https://github.com/sulthonzh/git-batch/issues"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.31.0"
   }
 }
